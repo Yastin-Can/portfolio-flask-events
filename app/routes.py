@@ -27,10 +27,14 @@ def index():
     # Obtener servicios
     services = Service.query.order_by(Service.order).all()
     
+    # Foto de perfil (nombre del archivo)
+    profile_image = "08c9f7c6-262a-4117-8e8c-0e5ee3ce84ba.jpg"
+    
     return render_template('index.html', 
                          featured_projects=featured_projects,
                          testimonials=testimonials,
-                         services=services)
+                         services=services,
+                         profile_image=profile_image)
 
 
 @main_bp.route('/about')
@@ -42,9 +46,13 @@ def about():
     # Obtener servicios
     services = Service.query.order_by(Service.order).all()
     
+    # Foto de perfil (nombre del archivo)
+    profile_image = "08c9f7c6-262a-4117-8e8c-0e5ee3ce84ba.jpg"
+    
     return render_template('about.html', 
                          project_count=project_count,
-                         services=services)
+                         services=services,
+                         profile_image=profile_image)
 
 
 @main_bp.route('/services')
