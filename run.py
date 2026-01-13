@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-Punto de entrada principal de la aplicación Flask
-Ejecutar con: python run.py
-"""
 
 import os
 from dotenv import load_dotenv
