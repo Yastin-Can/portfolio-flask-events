@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Tecnologías - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="fw-bold mb-5 text-center">Stack Tecnológico</h1>
+        <p class="lead text-center mb-5">
+            Utilizamos las mejores tecnologías modernas para crear sitios rápidos, seguros y escalables.
+        </p>
+
+        <!-- Frontend -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4">
+                    <i class="fas fa-code text-primary me-2"></i>Frontend (Cliente)
+                </h3>
+            </div>
+            {% for tech in tech_stack.frontend %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle text-success fa-2x mb-3"></i>
+                        <h6 class="card-title fw-bold">{{ tech }}</h6>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <!-- Backend -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4">
+                    <i class="fas fa-database text-primary me-2"></i>Backend (Servidor)
+                </h3>
+            </div>
+            {% for tech in tech_stack.backend %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle text-success fa-2x mb-3"></i>
+                        <h6 class="card-title fw-bold">{{ tech }}</h6>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <!-- Tools -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4">
+                    <i class="fas fa-wrench text-primary me-2"></i>Herramientas & DevOps
+                </h3>
+            </div>
+            {% for tech in tech_stack.tools %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle text-success fa-2x mb-3"></i>
+                        <h6 class="card-title fw-bold">{{ tech }}</h6>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <!-- Services -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4">
+                    <i class="fas fa-cloud text-primary me-2"></i>Servicios Integrados
+                </h3>
+            </div>
+            {% for tech in tech_stack.services %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle text-success fa-2x mb-3"></i>
+                        <h6 class="card-title fw-bold">{{ tech }}</h6>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Info -->
+        <div class="mt-5 p-5 bg-light rounded-3">
+            <h5 class="fw-bold mb-3">¿Por qué estas tecnologías?</h5>
+            <p class="mb-2">
+                <strong>Rendimiento:</strong> Sitios ultrarrápidos que cargan en menos de 1 segundo
+            </p>
+            <p class="mb-2">
+                <strong>Escalabilidad:</strong> Tu sitio crece con tu negocio sin problemas técnicos
+            </p>
+            <p class="mb-2">
+                <strong>Seguridad:</strong> Protección contra ataques y vulnerabilidades comunes
+            </p>
+            <p>
+                <strong>Soporte:</strong> Comunidades activas y documentación abundante para mantenimiento a largo plazo
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

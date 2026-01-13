@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Página no encontrada - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center">
+    <div class="container">
+        <h1 class="display-1 fw-bold text-danger mb-3">404</h1>
+        <h2 class="fw-bold mb-3">Página no encontrada</h2>
+        <p class="lead text-muted mb-5">Lo sentimos, la página que buscas no existe o fue movida.</p>
+        
+        <a href="/" class="btn btn-primary btn-lg">Volver al Inicio</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="/portfolio">Portafolio</a></li>
+                <li class="breadcrumb-item active">{{ project.title }}</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <!-- Imagen principal -->
+                {% if project.image_url %}
+                <img src="{{ project.image_url }}" alt="{{ project.title }}" class="img-fluid rounded mb-4">
+                {% endif %}
+
+                <h1 class="fw-bold mb-3">{{ project.title }}</h1>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p class="text-muted">
+                            <strong>Cliente:</strong> {{ project.client_name }}
+                        </p>
+                        <p class="text-muted">
+                            <strong>Tipo:</strong> {{ project.client_type }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-muted">
+                            <strong>Fecha:</strong> {{ project.date_completed.strftime('%d/%m/%Y') }}
+                        </p>
+                        {% if project.project_url %}
+                        <p class="text-muted">
+                            <strong>Sitio:</strong> <a href="{{ project.project_url }}" target="_blank">Ver en vivo</a>
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- El Problema -->
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-3">
+                        <i class="fas fa-exclamation-triangle text-warning me-2"></i>El Problema
+                    </h3>
+                    <div class="card bg-light border-0">
+                        <div class="card-body">
+                            {{ project.challenge }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- La Solución -->
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-3">
+                        <i class="fas fa-lightbulb text-info me-2"></i>La Solución
+                    </h3>
+                    <div class="card bg-light border-0">
+                        <div class="card-body">
+                            {{ project.solution }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Los Resultados -->
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-3">
+                        <i class="fas fa-chart-line text-success me-2"></i>Los Resultados
+                    </h3>
+                    <div class="card bg-light border-0">
+                        <div class="card-body">
+                            {{ project.results }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imágenes Antes/Después -->
+                {% if project.before_image_url or project.after_image_url %}
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-3">
+                        <i class="fas fa-images me-2"></i>Antes & Después
+                    </h3>
+                    <div class="row">
+                        {% if project.before_image_url %}
+                        <div class="col-md-6 mb-3">
+                            <h5>Antes</h5>
+                            <img src="{{ project.before_image_url }}" alt="Antes" class="img-fluid rounded">
+                        </div>
+                        {% endif %}
+                        {% if project.after_image_url %}
+                        <div class="col-md-6 mb-3">
+                            <h5>Después</h5>
+                            <img src="{{ project.after_image_url }}" alt="Después" class="img-fluid rounded">
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Tecnologías -->
+                {% if project.technologies %}
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-3">
+                        <i class="fas fa-tools me-2"></i>Tecnologías Usadas
+                    </h3>
+                    <p>{{ project.technologies }}</p>
+                </div>
+                {% endif %}
+
+                <!-- CTA -->
+                <div class="alert alert-primary" role="alert">
+                    <h5 class="alert-heading fw-bold">¿Te interesa un proyecto similar?</h5>
+                    <p>Contáctame para discutir cómo puedo ayudarte a transformar tu presencia online.</p>
+                    <a href="/contact" class="btn btn-primary">Solicitar Cotización</a>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Resumen rápido -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Resumen del Proyecto</h5>
+                        <p class="card-text">{{ project.short_description }}</p>
+                    </div>
+                </div>
+
+                <!-- Proyectos relacionados -->
+                {% if related_projects %}
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold mb-3">Otros Proyectos</h5>
+                        {% for related in related_projects %}
+                        <div class="mb-3">
+                            <a href="/portfolio/{{ related.slug }}" class="text-decoration-none">
+                                <h6 class="mb-1">{{ related.title }}</h6>
+                            </a>
+                            <p class="small text-muted mb-2">{{ related.client_name }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Contacto -->
+                <div class="card border-0 shadow-sm bg-dark text-white mt-4">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold mb-3">¿Hablamos?</h5>
+                        <p class="small mb-3">Estoy disponible para consultas y proyectos nuevos</p>
+                        <a href="https://wa.me/56922326630" target="_blank" class="btn btn-success w-100">
+                            <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+            <h2>Project Gallery</h2>
+            <img src="{{ url_for('static', filename='images/project_image1.jpg') }}" alt="Project Image 1">
+            <img src="{{ url_for('static', filename='images/project_image2.jpg') }}" alt="Project Image 2">
+            <!-- Add more images as needed -->
+        </div>
+        <a href="{{ url_for('portfolio') }}" class="back-button">Back to Portfolio</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

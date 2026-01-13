@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero py-5 bg-gradient">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3">
+                    Webs Modernas para tus Eventos y Restaurante
+                </h1>
+                <p class="lead mb-4">
+                    Crea una presencia online que convierte visitantes en clientes. Sitios responsive, elegantes y optimizados para mobile.
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3 pb-5">
+                    <a href="/contact" class="btn btn-primary btn-lg">Solicitar Cotización</a>
+                    <a href="/portfolio" class="btn btn-outline-primary btn-lg">Ver Proyectos</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card bg-light shadow-lg border-0">
+                    <div class="card-body p-5 text-center">
+                        <i class="fas fa-globe fa-5x mb-3" style="color: var(--primary-color);"></i>
+                        <h3>Websites que venden</h3>
+                        <p class="text-muted">Diseños atractivos y funcionales orientados a resultados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <h2 class="display-5 fw-bold">{{ featured_projects|length if featured_projects else 0 }}+</h2>
+                <p>Proyectos Completados</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h2 class="display-5 fw-bold">100%</h2>
+                <p>Responsive Mobile-First</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h2 class="display-5 fw-bold">24/7</h2>
+                <p>Soporte y Mantenimiento</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problemas Comunes Section -->
+<section class="problems py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Problemas que Resolvemos</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-mobile-alt text-danger me-2"></i>No es Responsive</h5>
+                        <p class="card-text">Tu sitio se ve horrible en móviles y tablet. Pierdes 60% de visitantes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-hourglass text-warning me-2"></i>Demasiado Lento</h5>
+                        <p class="card-text">Usuarios abandonan en 3 segundos. Afecta posicionamiento en Google.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-user-slash text-info me-2"></i>Sin Llamadas a Acción</h5>
+                        <p class="card-text">Los visitantes no saben qué hacer. No generan contactos ni reservas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-search text-success me-2"></i>Invisible en Google</h5>
+                        <p class="card-text">Nadie te encuentra cuando buscan. Sin SEO, sin clientes nuevos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/problems" class="btn btn-outline-primary">Ver más problemas</a>
+        </div>
+    </div>
+</section>
+
+<!-- Servicios Destacados -->
+{% if services %}
+<section class="services py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Servicios</h2>
+        <div class="row">
+            {% for service in services[:3] %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas {{ service.icon }} fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">{{ service.name }}</h5>
+                        <p class="card-text text-muted">{{ service.description[:100] }}...</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="/services" class="btn btn-primary">Ver todos los servicios</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Proyectos Destacados -->
+{% if featured_projects %}
+<section class="portfolio py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Proyectos Destacados</h2>
+        <div class="row">
+            {% for project in featured_projects %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                    {% if project.image_url %}
+                    <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}">
+                    {% else %}
+                    <div class="bg-secondary text-white p-5 text-center">
+                        <i class="fas fa-image fa-3x"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text text-muted">{{ project.short_description }}</p>
+                        <p class="small text-muted">
+                            <i class="fas fa-building me-2"></i>{{ project.client_name }}
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="/portfolio/{{ project.slug }}" class="btn btn-outline-primary w-100">Ver caso de estudio</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="/portfolio" class="btn btn-primary">Ver todos los proyectos</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA Section -->
+<section class="cta py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3">¿Listo para transformar tu presencia online?</h2>
+        <p class="lead mb-4">
+            Solicita una consulta gratuita y descubre cómo podemos hacer crecer tu negocio
+        </p>
+        <a href="https://wa.me/56922326630?text=Hola%20Yastin%2C%20quisiera%20saber%20m%C3%A1s%20sobre%20tus%20servicios" 
+           target="_blank" 
+           class="btn btn-light btn-lg">
+            <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+        </a>
+    </div>
+</section>
+{% endblock %}

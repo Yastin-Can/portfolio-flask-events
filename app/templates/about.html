@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre mí - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="fw-bold mb-4">Hola, soy Yastin Villarroel</h1>
+                <p class="lead mb-3">
+                    Desarrollador Web especializado en crear sitios modernos, responsive y orientados a resultados para eventos y gastronomía.
+                </p>
+                <p class="mb-3">
+                    Soy estudiante de Ingeniería en Informática en la Pontificia Universidad Católica de Valparaíso (PUCV) con formación como Técnico en Programación. He trabajado con múltiples clientes del rubro de eventos, bodas y restaurantes, ayudándoles a transformar su presencia online.
+                </p>
+                <p class="text-muted">
+                    Mi enfoque es crear webs que no solo se ven hermosas, sino que generan resultados reales: más visitantes, mejor experiencia mobile, y conversión de clientes.
+                </p>
+
+                <div class="mt-5">
+                    <h5 class="fw-bold mb-4">Formación & Certificaciones</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-graduation-cap text-primary me-2"></i>
+                            <strong>Ingeniería en Informática</strong> - PUCV
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-certificate text-primary me-2"></i>
+                            <strong>Técnico Nivel Medio en Programación</strong>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-award text-primary me-2"></i>
+                            <strong>Certificado Desarrollador Web</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-lg bg-light">
+                    <div class="card-body p-5 text-center">
+                        <i class="fas fa-user-circle fa-5x text-primary mb-4"></i>
+                        <h3 class="fw-bold mb-3">Yastin Villarroel Cancino</h3>
+                        <p class="text-muted mb-4">Desarrollador Web & Freelancer</p>
+                        <div class="d-grid gap-2">
+                            <a href="https://wa.me/56922326630" target="_blank" class="btn btn-success">
+                                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                            </a>
+                            <a href="mailto:yastin.freelance@gmail.com" class="btn btn-danger">
+                                <i class="fas fa-envelope me-2"></i>Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Números -->
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4 text-center">
+                <div class="p-4 bg-light rounded">
+                    <h3 class="display-6 fw-bold text-primary">{{ project_count }}+</h3>
+                    <p class="text-muted">Proyectos Completados</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 text-center">
+                <div class="p-4 bg-light rounded">
+                    <h3 class="display-6 fw-bold text-primary">100%</h3>
+                    <p class="text-muted">Mobile-First</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 text-center">
+                <div class="p-4 bg-light rounded">
+                    <h3 class="display-6 fw-bold text-primary">24/7</h3>
+                    <p class="text-muted">Soporte</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tecnologías -->
+        {% if services %}
+        <div class="mt-5">
+            <h3 class="fw-bold mb-4">Lo que hago</h3>
+            <div class="row">
+                {% for service in services[:4] %}
+                <div class="col-md-6 mb-3">
+                    <div class="d-flex">
+                        <i class="fas {{ service.icon }} fa-2x text-primary me-3 flex-shrink-0"></i>
+                        <div>
+                            <h6 class="fw-bold">{{ service.name }}</h6>
+                            <p class="small text-muted">{{ service.description[:80] }}...</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- CTA -->
+        <div class="mt-5 p-5 bg-primary text-white rounded-3">
+            <h3 class="fw-bold mb-3">¿Tienes un proyecto en mente?</h3>
+            <p class="mb-4">Estoy disponible para proyectos nuevos y conversaciones sobre tu negocio.</p>
+            <a href="/contact" class="btn btn-light">Contactar</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

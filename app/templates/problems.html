@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Problemas Comunes - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="fw-bold mb-4">Problemas Comunes que Resolvemos</h1>
+        <p class="lead mb-5">¿Reconoces tu sitio web en alguno de estos problemas?</p>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-danger border-2">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger fw-bold">
+                            <i class="fas fa-mobile-alt me-2"></i>No es Responsive
+                        </h5>
+                        <p class="card-text">
+                            Tu sitio se ve horrible en móviles y tablets. Los visitantes ven contenido fuera de pantalla, 
+                            texto ilegible, y botones que no funcionan correctamente. Resultado: pierdes 60% de tus visitantes 
+                            potenciales que acceden desde móviles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-warning border-2">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning fw-bold">
+                            <i class="fas fa-hourglass-end me-2"></i>Demasiado Lento
+                        </h5>
+                        <p class="card-text">
+                            Tu sitio tarda más de 3 segundos en cargar. Los usuarios abandonan antes de ver tu contenido. 
+                            Además, Google penaliza los sitios lentos, lo que afecta negativamente tu posicionamiento en 
+                            buscadores y visibilidad online.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-info border-2">
+                    <div class="card-body">
+                        <h5 class="card-title text-info fw-bold">
+                            <i class="fas fa-user-slash me-2"></i>Sin Llamadas a Acción
+                        </h5>
+                        <p class="card-text">
+                            Los visitantes no saben qué hacer. No hay botones claros para reservar, contactar o comprar. 
+                            Tu sitio es bonito pero no genera conversiones. Los potenciales clientes se pierden en la navegación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-success border-2">
+                    <div class="card-body">
+                        <h5 class="card-title text-success fw-bold">
+                            <i class="fas fa-search me-2"></i>Invisible en Google
+                        </h5>
+                        <p class="card-text">
+                            Nadie te encuentra cuando busca servicios como los tuyos. Sin SEO optimizado, sin estrategia de palabras 
+                            clave, tu sitio está enterrado en Google. Tus competidores aparecen primero.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-secondary border-2">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">
+                            <i class="fas fa-code me-2"></i>Código Desactualizado
+                        </h5>
+                        <p class="card-text">
+                            Tu sitio fue hecho hace años con tecnologías obsoletas. Es difícil mantenerlo, lento, inseguro, 
+                            y no funciona bien en navegadores modernos. Necesitas un rediseño completo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-primary border-2">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary fw-bold">
+                            <i class="fas fa-lock me-2"></i>Problemas de Seguridad
+                        </h5>
+                        <p class="card-text">
+                            Tu sitio no tiene certificado SSL, es vulnerable a ataques, o no protege los datos de tus clientes. 
+                            Los navegadores muestran advertencias de "No Seguro". Los usuarios no confían.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="alert alert-primary mt-5" role="alert">
+            <h4 class="alert-heading fw-bold">¿Tiene tu sitio alguno de estos problemas?</h4>
+            <p>
+                No te preocupes, tenemos la solución. Creamos sitios modernos, responsive, rápidos y optimizados para conversión.
+                Contáctanos para una consulta gratuita.
+            </p>
+            <a href="/contact" class="btn btn-primary">Solicitar Consulta Gratis</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

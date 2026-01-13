@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Contacto - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <h1 class="fw-bold mb-4">Contactame</h1>
+                <p class="lead mb-4">
+                    ¿Tienes un proyecto en mente? Me encantaría escuchar sobre él. 
+                    Completa el formulario o contáctame directamente.
+                </p>
+
+                <div class="contact-info mb-4">
+                    <h5 class="fw-bold mb-3">Información de Contacto</h5>
+                    
+                    <div class="mb-3">
+                        <p class="text-muted mb-2">
+                            <i class="fas fa-envelope me-2 text-primary"></i>Email
+                        </p>
+                        <p>
+                            <a href="mailto:yastin.freelance@gmail.com" class="text-decoration-none">
+                                yastin.freelance@gmail.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="mb-3">
+                        <p class="text-muted mb-2">
+                            <i class="fas fa-phone me-2 text-primary"></i>WhatsApp
+                        </p>
+                        <p>
+                            <a href="https://wa.me/56922326630" target="_blank" class="text-decoration-none">
+                                +56 9 2232 6630
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="mb-3">
+                        <p class="text-muted mb-2">
+                            <i class="fas fa-map-marker-alt me-2 text-primary"></i>Ubicación
+                        </p>
+                        <p>Valparaíso, Chile</p>
+                    </div>
+                </div>
+
+                <div class="bg-primary text-white p-4 rounded">
+                    <h5 class="fw-bold mb-3">Respuesta Rápida</h5>
+                    <p class="mb-3">
+                        Normalmente respondo en menos de 2 horas durante horario laboral.
+                        Para consultas urgentes, usa WhatsApp.
+                    </p>
+                    <p class="mb-0">
+                        <strong>También puedes encontrarme en:</strong>
+                    </p>
+                    <div class="mt-3 d-flex flex-wrap gap-2">
+                        <a href="{{ config.SOCIAL_LINKS.github }}" target="_blank" class="btn btn-light btn-sm">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
+                        <a href="{{ config.SOCIAL_LINKS.linkedin }}" target="_blank" class="btn btn-light btn-sm">
+                            <i class="fab fa-linkedin me-1"></i>LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-4">Envía tu Mensaje</h5>
+                        
+                        <form method="POST" novalidate>
+                            {{ form.hidden_tag() }}
+
+                            <div class="mb-3">
+                                {{ form.name(class="form-control form-control-lg" + (" is-invalid" if form.name.errors else "")) }}
+                                {% if form.name.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.name.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.email(class="form-control form-control-lg" + (" is-invalid" if form.email.errors else "")) }}
+                                {% if form.email.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.email.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.phone(class="form-control form-control-lg" + (" is-invalid" if form.phone.errors else "")) }}
+                                {% if form.phone.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.phone.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.subject(class="form-select form-select-lg" + (" is-invalid" if form.subject.errors else "")) }}
+                                {% if form.subject.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.subject.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.message(class="form-control form-control-lg" + (" is-invalid" if form.message.errors else "")) }}
+                                {% if form.message.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.message.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                {{ form.submit(class="btn btn-primary btn-lg") }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

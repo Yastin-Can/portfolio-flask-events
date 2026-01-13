@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Servicios - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="fw-bold mb-5 text-center">Servicios Profesionales</h1>
+        
+        {% if services %}
+        <div class="row">
+            {% for service in services %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas {{ service.icon }} text-primary me-2"></i>{{ service.name }}
+                        </h5>
+                        <p class="card-text">{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Planes de Mantenimiento -->
+{% if plans %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="fw-bold mb-5 text-center">Planes de Mantenimiento Mensual</h2>
+        <div class="row">
+            {% for plan in plans %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm {% if plan.recommended %}border-primary border-2{% endif %}">
+                    {% if plan.recommended %}
+                    <div class="alert alert-warning m-2 mb-1 text-center">
+                        <small>Recomendado</small>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ plan.name }}</h5>
+                        <p class="lead fw-bold text-primary mb-3">
+                            ${{ plan.price }}/mes
+                        </p>
+                        <p class="card-text">{{ plan.description }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="/contact" class="btn btn-primary w-100">Contratar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

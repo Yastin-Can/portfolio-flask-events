@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Portafolio - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="fw-bold mb-5 text-center">Mis Proyectos</h1>
+        <p class="lead text-center mb-5">
+            Casos de éxito de empresas que transformaron su presencia online con webs modernas y responsive
+        </p>
+        
+        {% if projects.items %}
+        <div class="row">
+            {% for project in projects.items %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                    {% if project.image_url %}
+                    <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}" style="height: 250px; object-fit: cover;">
+                    {% else %}
+                    <div class="bg-secondary text-white p-5 text-center" style="height: 250px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-image fa-3x"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text flex-grow-1 text-muted">{{ project.short_description }}</p>
+                        <p class="small text-muted">
+                            <i class="fas fa-building me-2"></i>{{ project.client_name }}
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="/portfolio/{{ project.slug }}" class="btn btn-outline-primary w-100">Ver caso de estudio</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Paginación -->
+        <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination justify-content-center">
+                {% if projects.has_prev %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ projects.prev_num }}">Anterior</a>
+                </li>
+                {% endif %}
+                
+                {% for page_num in projects.iter_pages() %}
+                    {% if page_num %}
+                        {% if page_num == projects.page %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ page_num }}</span>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                        </li>
+                        {% endif %}
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">...</span>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if projects.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ projects.next_num }}">Siguiente</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% else %}
+        <div class="alert alert-info text-center">
+            <p>Aún no hay proyectos publicados. Vuelva pronto para ver casos de éxito.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
